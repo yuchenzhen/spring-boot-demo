@@ -17,6 +17,17 @@ public class AccountController {
     public List<Account> account() {
         return accountRepository.findAll();
     }
+
+    @RequestMapping("/addAccount")
+    public Account addAccount(@RequestParam String name) {
+        System.out.println(name);
+        Account account = new Account();
+        account.setName(name);
+        Account result = accountRepository.insert(account);
+        System.out.println(result);
+
+        return result;
+    }
 }
 
 
